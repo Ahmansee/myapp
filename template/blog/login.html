@@ -1,0 +1,43 @@
+{% extends 'base_layout2.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LOGIN PAGE</title>
+    </head>
+    <body>
+        <section class="contact-area section-padding-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                <!-- Contact Form Area -->
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <div class="contact-form">
+    
+                            <div>
+                                users login page is here so your sucessfuly logged in
+                            </div>
+                            {% load widget_tweaks %}
+                            <form action="{% url 'blog:loginuser' %}" method="post">
+                            {% csrf_token %}
+                            {{ form.username|add_class:"form-control"}}
+                            <br>
+                            {{ form.password|add_class:"form-control"}}
+                            {% if request.GET.next %}
+                                <input type = "hidden" name="next" value ="{{ request.GET.next }}">
+                            {% endif %}
+                            <br>
+                            <div class="form-group">
+                                <input type = "submit" value ="login"class ="btn btn-success">
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+{% endblock %}
+
